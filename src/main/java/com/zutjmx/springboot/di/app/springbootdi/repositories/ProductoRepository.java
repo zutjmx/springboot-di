@@ -22,7 +22,7 @@ public class ProductoRepository {
         return this.datos;
     }
 
-    public Producto findByIProducto(Long id) {
+    public Producto findByIdProducto(Long id) {
         return this.datos.stream()
         .filter(p -> p.getId().equals(id))
         .findFirst()
