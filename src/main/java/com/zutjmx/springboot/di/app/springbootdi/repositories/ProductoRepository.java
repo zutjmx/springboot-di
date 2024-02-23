@@ -22,6 +22,13 @@ public class ProductoRepository {
         return this.datos;
     }
 
+    public Producto findByIProducto(Long id) {
+        return this.datos.stream()
+        .filter(p -> p.getId().equals(id))
+        .findFirst()
+        .orElseThrow();
+    }
+
     private List<Producto> generaProductos() {
         List<Producto> productos = new ArrayList<>();
         int indice = this.faker.number().numberBetween(11, 31);
