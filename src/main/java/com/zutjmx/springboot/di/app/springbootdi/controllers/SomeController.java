@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.HttpClientErrorException.NotFound;
 
 import com.zutjmx.springboot.di.app.springbootdi.models.Producto;
 import com.zutjmx.springboot.di.app.springbootdi.services.ProductoService;
