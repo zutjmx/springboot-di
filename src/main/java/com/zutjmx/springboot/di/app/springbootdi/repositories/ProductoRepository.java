@@ -11,8 +11,6 @@ public class ProductoRepository {
     
     private List<Producto> datos;
 
-    private Faker faker = new Faker(Locale.getDefault());
-
     public ProductoRepository() {
         List<Producto> productos = generaProductos();
         this.datos = productos;
@@ -30,13 +28,14 @@ public class ProductoRepository {
     }
 
     private List<Producto> generaProductos() {
+        Faker faker = new Faker(Locale.getDefault());
         List<Producto> productos = new ArrayList<>();
-        int indice = this.faker.number().numberBetween(11, 31);
+        int indice = faker.number().numberBetween(11, 31);
         for (int i = 0; i < indice; i++) {
             Producto producto = new Producto();
-            producto.setId(this.faker.number().randomNumber());
-            producto.setNombre(this.faker.commerce().productName());
-            producto.setPrecio(this.faker.number().randomNumber());
+            producto.setId(faker.number().randomNumber());
+            producto.setNombre(faker.commerce().productName());
+            producto.setPrecio(faker.number().randomNumber());
             productos.add(producto);
         }
         return productos;
