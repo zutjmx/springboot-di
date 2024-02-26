@@ -3,7 +3,7 @@ package com.zutjmx.springboot.di.app.springbootdi.services;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.zutjmx.springboot.di.app.springbootdi.models.Producto;
@@ -12,8 +12,12 @@ import com.zutjmx.springboot.di.app.springbootdi.repositories.ProductoRepository
 @Service
 public class ProductoServiceImpl implements ProductoService {
 
-    @Autowired
     private ProductoRepository productoRepository;
+
+    //Si se inyecta el repositorio vía el constructor no es necesaria la anotación @Autowired
+    public ProductoServiceImpl(ProductoRepository productoRepository) {
+        this.productoRepository = productoRepository;
+    }
 
     @Override
     public List<Producto> findAllProductos() {
@@ -32,5 +36,10 @@ public class ProductoServiceImpl implements ProductoService {
     public Producto findByIProducto(Long id) {
         return productoRepository.findByIdProducto(id);
     }
+
+    // @Autowired
+    // public void setProductoRepository(ProductoRepository productoRepository) {
+    //     this.productoRepository = productoRepository;
+    // }
 
 }
