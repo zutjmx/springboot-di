@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.zutjmx.springboot.di.app.springbootdi.models.Producto;
-import com.zutjmx.springboot.di.app.springbootdi.services.ProductoService;
+import com.zutjmx.springboot.di.app.springbootdi.services.ProductoServiceImpl;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 @RequestMapping("/api")
 public class SomeController {
 
-    private ProductoService productoService = new ProductoService();
+    private ProductoServiceImpl productoService = new ProductoServiceImpl();
 
     @GetMapping
     public List<Producto> getAllProductos() {
