@@ -4,12 +4,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.zutjmx.springboot.di.app.springbootdi.models.Producto;
 import com.zutjmx.springboot.di.app.springbootdi.repositories.ProductoRepository;
 
-@Component
+@Service
 public class ProductoServiceImpl implements ProductoService {
 
     @Autowired
