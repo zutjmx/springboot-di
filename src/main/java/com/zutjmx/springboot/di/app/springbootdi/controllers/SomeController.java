@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.zutjmx.springboot.di.app.springbootdi.models.Producto;
-import com.zutjmx.springboot.di.app.springbootdi.services.ProductoServiceImpl;
+import com.zutjmx.springboot.di.app.springbootdi.services.ProductoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class SomeController {
 
     @Autowired
-    private ProductoServiceImpl productoService;
+    private ProductoService productoService;
 
     @GetMapping
     public List<Producto> getAllProductos() {
