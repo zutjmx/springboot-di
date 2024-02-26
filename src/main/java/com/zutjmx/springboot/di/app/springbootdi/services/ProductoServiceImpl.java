@@ -3,6 +3,7 @@ package com.zutjmx.springboot.di.app.springbootdi.services;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 //import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +16,7 @@ public class ProductoServiceImpl implements ProductoService {
     private ProductoRepository productoRepository;
 
     //Si se inyecta el repositorio vía el constructor no es necesaria la anotación @Autowired
-    public ProductoServiceImpl(ProductoRepository productoRepository) {
+    public ProductoServiceImpl(@Qualifier("productoRepositoryAux") ProductoRepository productoRepository) {
         this.productoRepository = productoRepository;
     }
 
