@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import org.springframework.stereotype.Component;
+
 import com.github.javafaker.Faker;
 import com.zutjmx.springboot.di.app.springbootdi.models.Producto;
 
+@Component
 public class ProductoRepositoryImpl implements ProductoRepository {
     
     private List<Producto> datos;
