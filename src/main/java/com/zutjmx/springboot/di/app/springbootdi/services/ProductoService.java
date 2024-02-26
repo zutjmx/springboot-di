@@ -16,7 +16,8 @@ public class ProductoService {
         .stream()
         .map(p -> {
             Double precioConImpuesto = p.getPrecio()*1.16d;
-            Producto nuevoProducto = new Producto(p.getId(), p.getNombre(), precioConImpuesto.longValue());
+            Producto nuevoProducto = (Producto) p.clone();
+            nuevoProducto.setPrecio(precioConImpuesto.longValue());
             return nuevoProducto;
         }).collect(Collectors.toList());
     }
