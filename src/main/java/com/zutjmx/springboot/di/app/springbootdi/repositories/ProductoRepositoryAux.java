@@ -4,48 +4,44 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
 import com.github.javafaker.Faker;
 import com.zutjmx.springboot.di.app.springbootdi.models.Producto;
 
-@Primary
 @Repository
-public class ProductoRepositoryImpl implements ProductoRepository {
-    
-    private List<Producto> datos;
-
-    public ProductoRepositoryImpl() {
-        List<Producto> productos = generaProductos();
-        this.datos = productos;
-    }
+public class ProductoRepositoryAux implements ProductoRepository {
 
     @Override
     public List<Producto> findAllProductos() {
-        return this.datos;
+        return generaGot();
     }
 
     @Override
     public Producto findByIdProducto(Long id) {
-        return this.datos.stream()
-        .filter(p -> p.getId().equals(id))
-        .findFirst()
-        .orElseThrow();
+        return generaUnGot(id);
     }
 
-    private List<Producto> generaProductos() {
+    private List<Producto> generaGot() {
         Faker faker = new Faker(Locale.getDefault());
         List<Producto> productos = new ArrayList<>();
-        int indice = faker.number().numberBetween(11, 31);
-        for (int i = 0; i < indice; i++) {
+        for (int i = 0; i < 4; i++) {
             Producto producto = new Producto();
             producto.setId(faker.number().randomNumber());
-            producto.setNombre(faker.commerce().productName());
+            producto.setNombre(faker.gameOfThrones().character());
             producto.setPrecio(faker.number().randomNumber());
             productos.add(producto);
         }
         return productos;
+    }
+
+    private Producto generaUnGot(Long id) {
+        Faker faker = new Faker(Locale.getDefault());
+        Producto producto = new Producto();
+        producto.setId(id);
+        producto.setNombre(faker.gameOfThrones().character());
+        producto.setPrecio(faker.number().randomNumber());
+        return producto;
     }
 
 }
