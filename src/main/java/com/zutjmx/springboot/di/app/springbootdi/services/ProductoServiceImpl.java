@@ -16,7 +16,7 @@ public class ProductoServiceImpl implements ProductoService {
     private ProductoRepository productoRepository;
 
     //Si se inyecta el repositorio vía el constructor no es necesaria la anotación @Autowired
-    public ProductoServiceImpl(@Qualifier("productoRepositoryAux") ProductoRepository productoRepository) {
+    public ProductoServiceImpl(@Qualifier("productoRepoAux") ProductoRepository productoRepository) {
         this.productoRepository = productoRepository;
     }
 

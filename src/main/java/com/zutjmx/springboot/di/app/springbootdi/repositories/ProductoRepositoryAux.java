@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.github.javafaker.Faker;
 import com.zutjmx.springboot.di.app.springbootdi.models.Producto;
 
-@Repository
+@Repository("productoRepoAux")
 public class ProductoRepositoryAux implements ProductoRepository {
 
     @Override
