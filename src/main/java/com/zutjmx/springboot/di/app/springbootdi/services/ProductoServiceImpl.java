@@ -27,11 +27,11 @@ public class ProductoServiceImpl implements ProductoService {
         .stream()
         .map(p -> {
             Double precioConImpuesto = p.getPrecio()*1.16d;
-            /* Producto nuevoProducto = (Producto) p.clone();
+            Producto nuevoProducto = (Producto) p.clone();
             nuevoProducto.setPrecio(precioConImpuesto.longValue());
-            return nuevoProducto; */
-            p.setPrecio(precioConImpuesto.longValue());
-            return p;
+            return nuevoProducto;
+           /*  p.setPrecio(precioConImpuesto.longValue());
+            return p; */
         }).collect(Collectors.toList());
     }
 
