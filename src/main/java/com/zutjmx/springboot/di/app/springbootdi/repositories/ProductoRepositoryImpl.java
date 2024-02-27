@@ -6,12 +6,14 @@ import java.util.Locale;
 
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
+//import org.springframework.web.context.annotation.RequestScope;
 
 import com.github.javafaker.Faker;
 import com.zutjmx.springboot.di.app.springbootdi.models.Producto;
 
 @Primary
-@Repository
+//@RequestScope
+@Repository("productoRepoImpl")
 public class ProductoRepositoryImpl implements ProductoRepository {
     
     private List<Producto> datos;

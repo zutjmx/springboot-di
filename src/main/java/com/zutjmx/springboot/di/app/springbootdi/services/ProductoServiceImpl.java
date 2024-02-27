@@ -16,7 +16,7 @@ public class ProductoServiceImpl implements ProductoService {
     private ProductoRepository productoRepository;
 
     //Si se inyecta el repositorio vía el constructor no es necesaria la anotación @Autowired
-    public ProductoServiceImpl(@Qualifier("productoRepoAux") ProductoRepository productoRepository) {
+    public ProductoServiceImpl(@Qualifier("productoRepoImpl") ProductoRepository productoRepository) {
         this.productoRepository = productoRepository;
     }
 
@@ -27,9 +27,11 @@ public class ProductoServiceImpl implements ProductoService {
         .stream()
         .map(p -> {
             Double precioConImpuesto = p.getPrecio()*1.16d;
-            Producto nuevoProducto = (Producto) p.clone();
+            /* Producto nuevoProducto = (Producto) p.clone();
             nuevoProducto.setPrecio(precioConImpuesto.longValue());
-            return nuevoProducto;
+            return nuevoProducto; */
+            p.setPrecio(precioConImpuesto.longValue());
+            return p;
         }).collect(Collectors.toList());
     }
 
