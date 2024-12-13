@@ -24,7 +24,12 @@ public class ProductoServiceImpl implements ProductoService {
     private Environment environment;
 
     //Si se inyecta el repositorio vía el constructor no es necesaria la anotación @Autowired
-    public ProductoServiceImpl(@Qualifier("productoRepoImpl") ProductoRepository productoRepository) {
+    // public ProductoServiceImpl(@Qualifier("productoRepoImpl") ProductoRepository productoRepository) {
+    //     this.productoRepository = productoRepository;
+    // }
+
+    //Si se inyecta el repositorio vía el constructor no es necesaria la anotación @Autowired
+    public ProductoServiceImpl(@Qualifier("productoRepositoryJson") ProductoRepository productoRepository) {
         this.productoRepository = productoRepository;
     }
 
