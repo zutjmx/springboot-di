@@ -36,7 +36,7 @@ public class ProductoServiceImpl implements ProductoService {
         .findAllProductos()
         .stream()
         .map(p -> {
-            Double precioConImpuesto = p.getPrecio()*factorIva;
+            Double precioConImpuesto = p.getPrecio()*(factorIva==null?1d:factorIva);
             Producto nuevoProducto = (Producto) p.clone();
             nuevoProducto.setPrecio(precioConImpuesto.longValue());
             return nuevoProducto;
