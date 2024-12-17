@@ -4,11 +4,8 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
-import com.fasterxml.jackson.core.exc.StreamReadException;
-import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zutjmx.springboot.di.app.springbootdi.models.Producto;
 
@@ -16,15 +13,15 @@ public class ProductRepositoryJson implements ProductoRepository {
 
     private List<Producto> productos;
 
-    public ProductRepositoryJson() {
-        Resource resource = new ClassPathResource("json/producto.json");
+    public ProductRepositoryJson(Resource resource) {
         ObjectMapper mapper = new ObjectMapper();
         try {
-            productos = Arrays.asList(mapper.readValue(resource.getFile(),Producto[].class));
-        } catch (StreamReadException e) {
-            e.printStackTrace();
-        } catch (DatabindException e) {
-            e.printStackTrace();
+            productos = Arrays.asList(
+                mapper.readValue(
+                    resource.getInputStream(),
+                    Producto[].class
+                )
+            );
         } catch (IOException e) {
             e.printStackTrace();
         }
